@@ -12,14 +12,14 @@ window.addEventListener('DOMContentLoaded', () => {
         dots = document.querySelectorAll('.dot'); // точки
     let automatic = true; // автоматическая прокрутка
 
-    if (automatic) {
+    if (automatic) {                 // включение автоматической прокрутки
         prev.style.display = 'none';
         next.style.display = 'none';
         let auto = setInterval(function show() {
             slideIndex += 1;
             showSlides(slideIndex);
         }, 1000);
-    } else {
+    } else {                        // или отмена автоматической прокрутки
         showSlides(slideIndex);
     }
 
