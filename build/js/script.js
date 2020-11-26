@@ -4,13 +4,24 @@
 window.addEventListener('DOMContentLoaded', () => {
 
     let slideIndex = 1,  // номер текущего слайда
+        position = document.querySelector('.slider__track'),  // позиция слайдера
         slides = document.querySelectorAll('.slider__item'),  // слайды
         prev = document.querySelector('.button__prev'),  // кнопка назад
         next = document.querySelector('.button__next'),  // кнопка вперед
         dotsWrap = document.querySelector('.slider__dots'),  // контейнер для точек
         dots = document.querySelectorAll('.dot'); // точки
+    let automatic = true; // автоматическая прокрутка
 
-    showSlides(slideIndex);
+    if (automatic) {
+        prev.style.display = 'none';
+        next.style.display = 'none';
+        let auto = setInterval(function show() {
+            slideIndex += 1;
+            showSlides(slideIndex);
+        }, 1000);
+    } else {
+        showSlides(slideIndex);
+    }
 
     // функция показа одного из слайдов
 
@@ -24,10 +35,9 @@ window.addEventListener('DOMContentLoaded', () => {
             slideIndex = slides.length;
         }
 
-        slides.forEach((item) => item.style.display = "none");  // убираем показ всех слайдов
         dots.forEach((item) => item.classList.remove('dot_active')); // убираем активность всех точек
 
-        slides[slideIndex - 1].style.display = 'block'; // показываем один слайд
+        position.style.left = (-slideIndex + 1) * 100 + "%";
         dots[slideIndex - 1].classList.add('dot_active'); // делаем активной одну точку
 
     }
