@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
         next = document.querySelector('.button__next'),  // кнопка вперед
         dotsWrap = document.querySelector('.slider__dots'),  // контейнер для точек
         dots = document.querySelectorAll('.dot'); // точки
-    let automatic = true; // автоматическая прокрутка
+    let automatic = false; // автоматическая прокрутка
 
     if (automatic) {                 // включение автоматической прокрутки
         prev.style.display = 'none';
